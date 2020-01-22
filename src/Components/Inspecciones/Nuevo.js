@@ -19,22 +19,42 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Divider from '@material-ui/core/Divider';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
+import NuevoEstabDig from './NuevoEstabDiag'
+
 
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1),
   },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
 }));
 
 
 function InspeccionesNuevo(props){
+const [open, setOpen] = React.useState(false);
+
+const handleOpen = () => {
+  setOpen(true);
+}
 
   const classes = useStyles();
   const { handleDrawerToggle } = props;     
@@ -224,7 +244,26 @@ RUC:
 <TextField id="outlined-search" label="RUC" type="search" variant="outlined" />
 </Grid>
 <Grid item xs={5}>{/*grilla 1mera fila primera mitad*/}
-<Button variant="contained" fullWidth >Nuevo Establecimiento</Button>
+<Button variant="contained" fullWidth onClick={handleOpen}>Nuevo Establecimiento</Button>
+{/* <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <h2 id="transition-modal-title">Transition modal</h2>
+            <p id="transition-modal-description">react-transition-group animates me.</p>
+          </div>
+        </Fade>
+      </Modal> */}
 </Grid>
 <Grid item xs={2}>{/*grilla 1mera fila primera mitad*/}
 Razon Social:
@@ -418,6 +457,8 @@ Observaciones:
 
 
 </Container>
+
+{open === true && <NuevoEstabDig  open={open} setOpen={setOpen} />}
 </React.Fragment>
 )
 

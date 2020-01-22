@@ -103,14 +103,14 @@ render(){
 		<ListItemText primary="Inspecciones" />
 		</ListItem>
 
-		<ListItem button component={Link} to="/Dashboard/LocalesFarmaceuticos">
+		<ListItem button component={Link} to="/Dashboard/Locales/Busqueda">
 		<ListItemIcon>
 		
 		</ListItemIcon>
 		<ListItemText primary="Locales Farmaceuticos" />
 		</ListItem>
 
-		<ListItem button component={Link} to="/Dashboard/Usuarios">
+		<ListItem button component={Link} to="/Dashboard/Usuarios/Busqueda">
 		<ListItemIcon>
 		
 		</ListItemIcon>
